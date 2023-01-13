@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>
-            <img src="../assets/logo.png" alt="Logo">
+            <img src="../assets/jojo.png" alt="Logo">
         </h1>
     </header>
 

@@ -24,6 +24,11 @@
                   <i class="fas fa-pencil-alt"></i>
                 </span>
               </router-link>
+              <button class="button ml-2 is-danger" @click="excluir(projeto.id)">
+                <span class="icon is-small">
+                    <i class="fas fa-trash"></i>
+                </span>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -38,11 +43,16 @@
   
   export default defineComponent({
     name: "Lista",
-  
+    methods: {
+        excluir(id:string){
+            this.store.commit('EXCLUIR_PROJETO', id)
+        }
+    },
     setup() {
       const store = useStore();
       return {
         projetos: computed(() => store.state.projetos),
+        store
       };
     },
   });

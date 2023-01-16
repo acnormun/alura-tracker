@@ -4,7 +4,7 @@
       <BarraLateral @aoTemaAlterado="trocarTema"/>
     </div>
     <div class="column is-three-quarter conteudo">
-      <RouterView></RouterView>
+      <router-view></router-view>
     </div>
   </main>
 </template>

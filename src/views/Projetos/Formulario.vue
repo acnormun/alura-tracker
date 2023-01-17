@@ -4,20 +4,15 @@
     <form @submit.prevent="salvar">
       <div class="field">
         <label for="nomeDoProjeto" class="label"> Nome do Projeto </label>
-        <input
-          type="text"
-          class="input"
-          v-model="nomeDoProjeto"
-          id="nomeDoProjeto"
-        />
+        <input type="text" class="input" v-model="nomeDoProjeto" id="nomeDoProjeto" />
       </div>
       <div class="field">
         <button class="button" type="submit">
-            Salvar
+          Salvar
         </button>
       </div>
     </form>
- 
+
   </section>
 </template>
 
@@ -25,49 +20,50 @@
 import { defineComponent } from "vue";
 import { useStore } from "@/store";
 import { ADICIONA_PROJETO, ALTERA_PROJETO, NOTIFICAR } from "@/store/tipo-mutacoes";
+import useNotificador from '@/hooks/notificador'
 import { TipoNotificacao } from "@/interfaces/INotificacao";
+
 
 export default defineComponent({
   name: "Formulario",
   props: {
-    id:{
+    id: {
       type: String,
     }
   },
   mounted() {
-    if(this.id){
+    if (this.id) {
       const projeto = this.store.state.projetos.find(proj => proj.id == this.id);
       this.nomeDoProjeto = projeto?.nome || '';
     }
   },
-  data(){
+  data() {
     return {
-        nomeDoProjeto: '',
+      nomeDoProjeto: '',
     };
   },
   methods: {
-    salvar(){
-      if(this.id){
+    salvar() {
+      if (this.id) {
         this.store.commit(ALTERA_PROJETO, {
           id: this.id,
           nome: this.nomeDoProjeto
         })
-      }else{
+      } else {
         this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto)
       }
-        this.nomeDoProjeto='';
-        this.$router.push('/projetos');
-        this.store.commit(NOTIFICAR, {
-          titulo: 'Novo projeto foi salvo',
-          texto: 'Prontinho! Seu projeto já está disponível',
-          tipo: TipoNotificacao.SUCESSO
-        })
-    }
+      this.nomeDoProjeto = '';
+      this.$router.push('/projetos');
+      this.notificar(TipoNotificacao.SUCESSO,'Excelente!', 'O projeto foi cadastrado com sucesso')
+    },
+
   },
-  setup(){
+  setup() {
     const store = useStore();
+    const {notificar} = useNotificador()
     return {
-      store
+      store,
+      notificar
     }
   }
 });

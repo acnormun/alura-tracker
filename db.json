@@ -42,40 +42,13 @@
       "id": 3
     },
     {
-      "duracaoEmSegundos": 2,
-      "descricao": "alooooooo",
+      "duracaoEmSegundos": 3,
+      "descricao": "DDDD",
       "projeto": {
-        "id": 1,
-        "nome": "Alura Tracker 3.0"
+        "id": 2,
+        "nome": "ByteBank 2.0"
       },
       "id": 4
-    },
-    {
-      "duracaoEmSegundos": 3,
-      "descricao": "xxxxx",
-      "projeto": {
-        "id": 2,
-        "nome": "ByteBank 2.0"
-      },
-      "id": 5
-    },
-    {
-      "duracaoEmSegundos": 2,
-      "descricao": "sssss",
-      "projeto": {
-        "id": 2,
-        "nome": "ByteBank 2.0"
-      },
-      "id": 6
-    },
-    {
-      "duracaoEmSegundos": 2,
-      "descricao": "Teste",
-      "projeto": {
-        "nome": "Projeto teste",
-        "id": 3
-      },
-      "id": 7
     }
   ]
 }

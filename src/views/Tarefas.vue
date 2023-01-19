@@ -55,7 +55,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, ref, watchEffect } from "vue";
 import Formulario from "../components/Formulario.vue";
 import Tarefa from "../components/Tarefa.vue";
 import Box from "../components/Box.vue";
@@ -67,9 +67,10 @@ import {
   OBTER_TAREFAS,
 } from "@/store/tipo-acoes";
 import ITarefa from "@/interfaces/ITarefa";
+import { Store } from "vuex";
 
 export default defineComponent({
-  name: "App",
+  name: "Tarefas",
   components: {
     Formulario,
     Tarefa,
@@ -103,18 +104,17 @@ export default defineComponent({
   },
   setup() {
     const filtro = ref("");
-    const tarefas = computed(() =>
-      store.state.tarefa.tarefas.filter(
-        (t) => !filtro.value || t.descricao.includes(filtro.value)
-      )
-    );
 
     const store = useStore();
     store.dispatch(OBTER_TAREFAS);
     store.dispatch(OBTER_PROJETOS);
 
+    watchEffect(() => {
+      store.dispatch(OBTER_TAREFAS,filtro.value)
+    })
+
     return {
-      tarefas,
+      tarefas : computed(() => store.state.tarefa.tarefas),
       store,
       filtro,
     };

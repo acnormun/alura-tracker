@@ -63,11 +63,11 @@ export default defineComponent({
             id: props.id,
             nome: nomeDoProjeto.value,
           })
-          .then(() => {
-            lidarComSucesso();
-          });
+          .then(() => 
+            lidarComSucesso()
+          );
       } else {
-        store.dispatch(CADASTRAR_PROJETO,nomeDoProjeto).then(() => {
+        store.dispatch(CADASTRAR_PROJETO,nomeDoProjeto.value).then(() => {
           lidarComSucesso();
         });
       }

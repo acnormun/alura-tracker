@@ -3,13 +3,30 @@
     {
       "nome": "Teste 2",
       "id": 3
+    },
+    {
+      "nome": "Projeto teste 12",
+      "id": 4
+    },
+    {
+      "nome": "Plano de estudos",
+      "id": 5
     }
   ],
   "tarefas": [
     {
       "duracaoEmSegundos": 2,
-      "descricao": "aaaaa",
+      "descricao": "Testeeee 4",
       "id": 1
+    },
+    {
+      "duracaoEmSegundos": 4,
+      "descricao": "aaaaaa",
+      "projeto": {
+        "nome": "Teste 2",
+        "id": 3
+      },
+      "id": 2
     }
   ]
 }
